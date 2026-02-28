@@ -1,0 +1,14 @@
+.btn-primary {
+    background-color: #c9a654;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-outline {
+    border: 1px solid #c9a654;
+    color: #c9a654;
+    padding: 10px 20px;
+    text-decoration: none;
+}

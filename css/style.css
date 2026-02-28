@@ -1,0 +1,627 @@
+/* ===============================
+   GLOBAL STYLES
+=================================*/
+
+body {
+    margin: 0;
+    font-family: 'Cormorant Garamond', serif;
+    background-color: #1a1a1a;
+    color: #f5f5f0;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* ===============================
+   NAVBAR
+=================================*/
+/* =====================================
+   NAVBAR - EXACTLY LIKE YOUR SCREENSHOT
+===================================== */
+
+.navbar {
+    background: rgba(26, 26, 26, 0.92);
+    backdrop-filter: blur(20px);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 18px 0;
+    border-bottom: 1px solid #c9a654;
+    transition: all 0.4s ease;
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.logo {
+    color: #c9a654;
+    font-family: 'Playfair Display', serif;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+.logo .chef {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+.logo .tharu {
+    font-size: 38px;
+    margin-top: -8px;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 45px;
+    margin: 0;
+}
+
+.nav-links a {
+    color: #f5f5f0;
+    text-decoration: none;
+    font-size: 16.5px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #c9a654;
+}
+
+.reserve-wide-btn {
+    background: #c9a654;
+    color: #1a1a1a;
+    border: none;
+    padding: 14px 68px;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    min-width: 220px;
+}
+
+.reserve-wide-btn:hover {
+    background: #e0c17a;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(201, 166, 84, 0.5);
+}
+
+/* ===============================
+   BUTTONS
+=================================*/
+
+.btn-primary {
+    background-color: #c9a654;
+    color: #1a1a1a;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-outline {
+    border: 1px solid #c9a654;
+    color: #c9a654;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+/* ===============================
+   HERO SECTION
+=================================*/
+
+/* ===============================
+   HERO SECTION - FULLY FIXED WITH VIDEO
+=================================*/
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 650px;           /* works even on small laptops */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 95px;           /* ← THIS pushes content below navbar */
+}
+
+.bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+}
+
+.video-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 3;
+    max-width: 900px;
+    padding: 0 20px;
+}
+
+.tagline {
+    font-size: 21px;
+    font-weight: 400;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #f5f5f0;
+    margin-bottom: 12px;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 98px;
+    font-weight: 700;
+    line-height: 1.05;
+    color: #c9a654;
+    margin: 8px 0 25px 0;
+    text-shadow: 0 4px 25px rgba(0,0,0,0.7);
+}
+
+.hero-text {
+    font-size: 24px;
+    line-height: 1.35;
+    color: #f5f5f0;
+    max-width: 680px;
+    margin: 0 auto 50px auto;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 25px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-buttons a {
+    padding: 16px 42px;
+    font-size: 17px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    text-decoration: none;
+}
+
+.hero-buttons .btn-primary {
+    background-color: #c9a654;
+    color: #1a1a1a;
+}
+
+.hero-buttons .btn-primary:hover {
+    background-color: #e0c17a;
+    transform: translateY(-4px);
+}
+
+.hero-buttons .btn-outline {
+    border: 2px solid #c9a654;
+    color: #c9a654;
+    background: transparent;
+}
+
+.hero-buttons .btn-outline:hover {
+    background-color: #c9a654;
+    color: #1a1a1a;
+    transform: translateY(-4px);
+}
+
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    padding-top: 110px;   /* ← This fixes the overlap */
+}
+
+/* ===============================
+   GENERAL SECTIONS
+=================================*/
+
+.section {
+    padding: 100px 20px;
+}
+
+.section-title {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* ===============================
+   MENU SECTION
+=================================*/
+
+.menu-section {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+}
+
+.menu-bg-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    z-index: -2;
+}
+
+.menu-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: -1;
+    top: 0px;
+}
+
+.menu-content {
+    position: relative;
+    z-index: 2;
+}
+
+/* Slider */
+
+.menu-wrapper {
+    position: relative;
+    margin-top: 60px;
+}
+
+.menu-slider {
+    display: flex;
+    gap: 40px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+}
+
+.menu-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* Glass Cards */
+
+.glass {
+    min-width: 280px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+    transition: 0.4s;
+}
+
+.glass img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    margin-bottom: 15px;
+}
+
+.glass:hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+/* Arrows */
+
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    cursor: pointer;
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.4);
+    color: white;
+    z-index: 100;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.menu-wrapper:hover .arrow {
+    opacity: 1;
+}
+
+.left-arrow { left: -20px; }
+.right-arrow { right: -20px; }
+
+.arrow:hover {
+    transform: translateY(-50%) scale(1.1);
+}
+
+.menu-wrapper {
+    position: relative;
+    margin-top: 80px;
+    overflow: hidden;
+}
+
+.menu-slider {
+    display: flex;
+    gap: 60px;                 /* More spacing */
+    width: max-content;
+    animation: scrollMenu 30s linear infinite;
+}
+
+.menu-slider:hover {
+    animation-play-state: paused;
+}
+
+/* Auto Right → Left */
+@keyframes scrollMenu {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Bigger Cards */
+
+.glass {
+    min-width: 380px;          /* Increased size */
+    padding: 30px;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.10);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.25);
+    text-align: center;
+    transition: 0.4s;
+}
+
+.glass img {
+    width: 100%;
+    height: 250px;            /* Bigger image */
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.glass:hover {
+    transform: scale(1.07);
+}
+
+/* =====================================
+   RESERVATION - BEAUTIFUL + ANIMATED
+===================================== */
+
+.reservation-section {
+    padding: 140px 20px;
+    background: linear-gradient(to bottom, #1a1a1a, #121212);
+}
+
+.reservation-content {
+    max-width: 740px;
+    margin: 0 auto;
+}
+
+.reservation-subtitle {
+    font-size: 19px;
+    color: #fff6f6;
+    margin-bottom: 55px;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 28px;
+    margin-bottom: 28px;
+}
+
+.reservation-form .form-group {
+    position: relative;
+}
+
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.07);
+    border: 1px solid rgba(201,166,84,0.35);
+    border-radius: 12px;
+    padding: 18px 24px;
+    color: #ffffff;
+    font-size: 16.5px;
+    transition: all 0.35s ease;
+}
+
+.reservation-form input:focus,
+.reservation-form select:focus,
+.reservation-form textarea:focus {
+    outline: none;
+    border-color: #c9a654;
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 5px rgba(201, 166, 84, 0.18);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.reservation-form textarea {
+    resize: vertical;
+    min-height: 130px;
+}
+
+.form-group.full {
+    grid-column: 1 / -1;
+}
+.options {
+    background: #1a1a1a;
+    color: #fff;
+}
+
+/* Luxurious Gold Button Animation */
+.reserve-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 20px 40px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, #c9a654, #e0c17a);
+    color: #1a1a1a;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+.reserve-btn:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 20px 35px rgba(201, 166, 84, 0.45);
+    background: linear-gradient(90deg, #e0c17a, #f5d48a);
+}
+
+/* Success Message */
+.reservation-message {
+    margin-top: 30px;
+    font-size: 17px;
+    font-weight: 400;
+    min-height: 30px;
+}
+
+/* Nice calendar icon color */
+input[type="date"] {
+    color-scheme: dark;
+}
+
+
+/* ===============================
+   ABOUT SECTION - BEAUTIFUL & LUXURIOUS
+=================================*/
+
+.about-section {
+    background: linear-gradient(to bottom, #1a1a1a, #121212);
+    padding: 140px 20px;           /* more breathing room */
+}
+
+.about-content {
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 58px;
+    font-weight: 700;
+    color: #c9a654;
+    margin-bottom: 25px;
+    letter-spacing: 2px;
+}
+
+.gold-divider {
+    width: 160px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c9a654, transparent);
+    margin: 0 auto 50px auto;
+}
+
+.about-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1.85;
+    color: #d8d8d0;
+    font-weight: 300;
+    max-width: 780px;
+    margin: 0 auto;
+    letter-spacing: 0.4px;
+}
+
+/* Optional: fade-in on scroll (since AOS is already in your site) */
+.about-content[data-aos] {
+    transition-delay: 0.2s;
+}
+
+/* =====================================
+   BEAUTIFUL FOOTER
+===================================== */
+
+.footer {
+    background: #0f0f0f;
+    padding: 90px 20px 40px;
+    border-top: 1px solid #c9a654;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto 70px;
+}
+
+.footer-col h4 {
+    color: #c9a654;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+.footer-col p {
+    color: #aaa;
+    line-height: 1.7;
+}
+
+.footer-logo {
+    color: #c9a654;
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.social-links a {
+    color: #ddd;
+    text-decoration: none;
+    margin-right: 25px;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #c9a654;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 30px;
+    border-top: 1px solid #222;
+    color: #666;
+    font-size: 14px;
+}
