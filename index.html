@@ -2,283 +2,568 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Chef Tharu</title>
+    <title>Chef Tharu — Fine Dining</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500&display=swap" rel="stylesheet">
-
-    <!-- Custom CSS -->
+    <!--
+        FONTS:
+        Italiana           → luxury serif display titles
+        Cormorant Infant   → elegant body & italic text
+        Jost               → clean modern UI/labels
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;500&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <!-- Font Awesome icons (spices, social, UI) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/style.css">
-
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-
 </head>
+<body>
 
-<body class="font-body bg-dark text-light">
+<!-- ==========================================
+     CUSTOM CURSOR (desktop only; hidden on mobile via CSS)
+========================================== -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script>
-            AOS.init();
-        </script>
-
-<!-- Navigation -->
-<!-- Modern Navbar - Matches your screenshot -->
-<nav class="navbar" id="navbar">
-    <div class="container nav-content">
-        <div class="logo">
-            <span class="chef">Chef</span><br>
-            <span class="tharu">Tharu</span>
+<!-- ==========================================
+     PAGE LOADER — fades out after window.onload
+========================================== -->
+<div class="loader" id="loader">
+    <div class="loader-inner">
+        <span class="loader-name">Chef Tharu</span>
+        <div class="loader-bar">
+            <div class="loader-fill" id="loaderFill"></div>
         </div>
-        
-        <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#menu">Menu</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        
-        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
-                class="reserve-wide-btn">RESERVE</button>
     </div>
-</nav>
+</div>
 
+<!-- ==========================================
+     HEADER / NAVIGATION
+========================================== -->
+<header class="site-header" id="siteHeader">
+    <div class="header-inner container">
+
+        <!-- Logo: monogram mark + wordmark -->
+        <a href="#home" class="logo">
+            <div class="logo-mark">CT</div>
+            <div class="logo-text">
+                <span class="logo-main">Chef Tharu</span>
+                <span class="logo-tagline">Fine Dining · Colombo</span>
+            </div>
+        </a>
+
+        <!-- Desktop navigation links -->
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="#home"    class="nav-link"><span>01</span>Home</a></li>
+                <li><a href="#about"   class="nav-link"><span>02</span>Story</a></li>
+                <li><a href="#menu"    class="nav-link"><span>03</span>Menu</a></li>
+                <li><a href="#team"    class="nav-link"><span>04</span>Team</a></li>
+                <li><a href="#contact" class="nav-link"><span>05</span>Reserve</a></li>
+            </ul>
+        </nav>
+
+        <!-- Download Menu PDF button -->
+        <a href="assets/menu.pdf" download="ChefTharu-Menu.pdf" class="btn-download-menu">
+             <i class="fa-solid fa-download"></i>
+             <span>Download Menu</span>
+        </a>
+
+        <!-- Gold CTA button (hidden on mobile) -->
+        <a href="#contact" class="btn-reserve">
+            <span>Reserve a Table</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <!-- Hamburger: slides in mobile drawer -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+
+    </div>
+</header>
+
+<!-- ==========================================
+     HERO — full viewport, parallax + video
+========================================== -->
 <section id="home" class="hero">
 
-    <!-- Background Video -->
-    <video autoplay muted loop playsinline class="bg-video">
+    <!-- Looping ambient background video -->
+    <video autoplay muted loop playsinline class="hero-video">
         <source src="assets/restaurant-bg.mp4" type="video/mp4">
-        Your browser does not support the video tag.
     </video>
 
-    <!-- Dark Overlay -->
-    <div class="video-overlay"></div>
+    <!-- Two overlay layers for cinematic depth -->
+    <div class="hero-overlay"></div>
+    <div class="hero-vignette"></div>
 
-    <!-- Hero Content -->
-    <div class="hero-content">
-        <p class="tagline">Fine Dining Experience</p>
-        <h1 class="hero-title">Chef Tharu</h1>
-        <p class="hero-text">Where culinary artistry meets timeless elegance</p>
+    <!-- Slow-drifting warm glowing orbs (pure CSS animation) -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
 
-        <div class="hero-buttons">
-            <a href="#menu" class="btn-primary">View Menu</a>
-            <a href="#contact" class="btn-outline">Book a Table</a>
-        </div>
+    <!-- Rotated vertical side labels (decorative, desktop only) -->
+    <div class="hero-side-text side-left">Est. 2018 · Colombo</div>
+    <div class="hero-side-text side-right">Sri Lanka · Fine Cuisine</div>
+
+    <!-- Animated scroll prompt at bottom -->
+    <div class="scroll-indicator">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-line"></div>
     </div>
 
+    <!-- Main content block — JS applies parallax translateY on scroll -->
+    <div class="hero-content" id="heroContent">
+
+        <!-- Eyebrow with decorative horizontal bars -->
+        <p class="hero-eyebrow">
+            <span class="eyebrow-line"></span>
+            Fine Dining Experience
+            <span class="eyebrow-line"></span>
+        </p>
+
+        <!-- Giant display title (staggered CSS animation on page load) -->
+        <h1 class="hero-title">
+            <span class="title-word" style="--i:0">Chef</span>
+            <span class="title-word title-accent" style="--i:1">Tharu</span>
+        </h1>
+
+        <!-- Italic subtitle -->
+        <p class="hero-subtitle">Where culinary artistry meets timeless elegance</p>
+
+        <!-- Primary + ghost CTA pair -->
+        <div class="hero-cta">
+            <a href="#menu"    class="btn-primary"><span>Explore Menu</span><div class="btn-shine"></div></a>
+            <a href="#contact" class="btn-ghost"><span>Book a Table</span></a>
+        </div>
+
+        <!-- Animated number stats (JS counts up on load) -->
+        <div class="hero-stats">
+            <div class="stat">
+                <span class="stat-number" data-target="7">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Years of Excellence</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-number" data-target="120">0</span><span class="stat-plus">+</span>
+                <span class="stat-label">Signature Dishes</span>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat">
+                <span class="stat-number" data-target="50">0</span><span class="stat-plus">k+</span>
+                <span class="stat-label">Happy Guests</span>
+            </div>
+        </div>
+
+    </div>
 </section>
 
-<!-- About Section -->
-<section id="about" class="section about-section">
+<!-- ==========================================
+     MARQUEE TICKER STRIP (gold, between sections)
+========================================== -->
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span>Wagyu Tenderloin</span><span class="marquee-dot">✦</span>
+        <span>Butter Lobster</span><span class="marquee-dot">✦</span>
+        <span>Koththu Reimagined</span><span class="marquee-dot">✦</span>
+        <span>Chocolate Soufflé</span><span class="marquee-dot">✦</span>
+        <span>Sri Lankan Fusion</span><span class="marquee-dot">✦</span>
+        <span>Truffle Risotto</span><span class="marquee-dot">✦</span>
+        <span>Seared Scallops</span><span class="marquee-dot">✦</span>
+        <!-- Duplicate set — CSS animates -50% so seam is invisible -->
+        <span>Wagyu Tenderloin</span><span class="marquee-dot">✦</span>
+        <span>Butter Lobster</span><span class="marquee-dot">✦</span>
+        <span>Koththu Reimagined</span><span class="marquee-dot">✦</span>
+        <span>Chocolate Soufflé</span><span class="marquee-dot">✦</span>
+        <span>Sri Lankan Fusion</span><span class="marquee-dot">✦</span>
+        <span>Truffle Risotto</span><span class="marquee-dot">✦</span>
+        <span>Seared Scallops</span><span class="marquee-dot">✦</span>
+    </div>
+</div>
+
+<!-- ==========================================
+     ABOUT / OUR STORY
+========================================== -->
+<section id="about" class="about-section">
+
+    <!-- Floating spice icons spawned by JS -->
+    <div class="spice-animation"></div>
+
+    <!-- Slow parallax background image (moved by JS) -->
+    <div class="about-bg-layer" id="aboutBgLayer"></div>
+
     <div class="container">
-        <div class="about-content text-center" data-aos="fade-up">
-            <h2 class="section-title">Our Story</h2>
-            <div class="gold-divider"></div>
-            <p class="about-text">
-                Nestled in the heart of Colombo, Chef Tharu has been redefining Sri Lankan fine dining since 2018. 
-                Under the passionate vision of Chef Tharu, we masterfully blend the bold, aromatic traditions of our island 
-                with the elegance of contemporary international techniques. From elevating the beloved Koththu to a fine-dining masterpiece 
-                to presenting premium dishes like Wagyu Beef Tenderloin with a distinct Sri Lankan soul, every plate is crafted with 
-                fresh local ingredients, precision, and deep culinary artistry — creating unforgettable moments of timeless elegance 
-                and warm Sri Lankan hospitality.
-            </p>
+        <div class="about-grid">
+
+            <!-- LEFT: layered image composition with accent badge -->
+            <div class="about-visual" data-reveal="left">
+                <div class="about-img-frame">
+                    <img src="images/food1.jpg" alt="Chef Tharu signature dish" class="about-img">
+                    <div class="about-img-overlay"></div>
+                </div>
+                <!-- Gold year badge floating bottom-right of main image -->
+                <div class="about-badge">
+                    <span class="badge-number">2018</span>
+                    <span class="badge-text">Founded in Colombo</span>
+                </div>
+                <!-- Accent thumbnail overlapping bottom-right corner -->
+                <div class="about-img-accent">
+                    <img src="images/food2.jpg" alt="Cuisine close-up">
+                </div>
+            </div>
+
+            <!-- RIGHT: headline, body text, philosophy pillars -->
+            <div class="about-text-col" data-reveal="right">
+                <p class="section-eyebrow">Our Story</p>
+                <h2 class="section-title left-align">
+                    A Culinary<br><em>Love Letter</em><br>to Sri Lanka
+                </h2>
+                <div class="gold-divider"></div>
+                <p class="about-body">
+                    Nestled in the heart of Colombo, Chef Tharu has been redefining Sri Lankan fine dining since 2018.
+                    Under the passionate vision of Chef Tharu, we masterfully blend the bold, aromatic traditions of our
+                    island with the elegance of contemporary international techniques.
+                </p>
+                <p class="about-body">
+                    From elevating the beloved Koththu to a fine-dining masterpiece to presenting premium dishes
+                    like Wagyu Beef Tenderloin with a distinct Sri Lankan soul — every plate is crafted with fresh
+                    local ingredients, precision, and deep culinary artistry.
+                </p>
+                <!-- Three philosophy pillars with icon circles -->
+                <div class="about-pillars">
+                    <div class="pillar">
+                        <i class="fa-solid fa-fire-flame-curved"></i>
+                        <span>Local Ingredients</span>
+                    </div>
+                    <div class="pillar">
+                        <i class="fa-solid fa-crown"></i>
+                        <span>World Techniques</span>
+                    </div>
+                    <div class="pillar">
+                        <i class="fa-solid fa-heart"></i>
+                        <span>Sri Lankan Soul</span>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- Menu Section -->
-
+<!-- ==========================================
+     MENU — infinite auto-scroll carousel over video
+========================================== -->
 <section id="menu" class="menu-section">
 
-    <!-- Background Video -->
+    <!-- Full-bleed looping video (darkened with overlay) -->
     <video autoplay muted loop playsinline class="menu-bg-video">
         <source src="assets/menu-bg.mp4" type="video/mp4">
     </video>
-
-    <!-- Dark Overlay -->
     <div class="menu-overlay"></div>
 
     <div class="menu-content container">
-        <h2 class="section-title text-center">Signature Dishes</h2>
 
+        <div class="menu-header" data-reveal="up">
+            <p class="section-eyebrow light">Signature Dishes</p>
+            <h2 class="section-title light">The Menu</h2>
+            <div class="gold-divider center"></div>
+        </div>
+
+        <!--
+            Slider track: CSS animates translateX(-50%) so
+            the duplicate set creates a perfectly seamless loop.
+            Hovering the track pauses the animation.
+        -->
         <div class="menu-wrapper">
+            <div class="menu-slider" id="menuSlider">
 
-            <!-- Left Arrow 
-            <div class="arrow left-arrow">&#10094;</div>  -->
-
-            <!-- Slider - 14 cards (7 original + 7 duplicate) -->
-    <div class="menu-slider" id="menuSlider">
-
-        <!-- Original set -->
-        <div class="menu-card glass">
-            <img src="images/food1.jpg" alt="Koththu">
-            <h3>Koththu</h3>
-            <p>RS. 850</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food2.jpg" alt="Wagyu Beef">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food3.jpg" alt="Lobster">
-            <h3>Butter Poached Lobster</h3>
-            <p>$78</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food4.jpg" alt="Chocolate Soufflé">
-            <h3>Chocolate Soufflé</h3>
-            <p>$24</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food5.jpg" alt="Wagyu">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food6.jpg" alt="Wagyu">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food7.jpg" alt="Wagyu">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-
-        <!-- Duplicate set (MUST be identical) -->
-        <div class="menu-card glass">
-            <img src="images/food1.jpg" alt="Koththu">
-            <h3>Koththu</h3>
-            <p>RS. 850</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food2.jpg" alt="Wagyu Beef">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food3.jpg" alt="Lobster">
-            <h3>Butter Poached Lobster</h3>
-            <p>$78</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food4.jpg" alt="Chocolate Soufflé">
-            <h3>Chocolate Soufflé</h3>
-            <p>$24</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food5.jpg" alt="Wagyu">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food6.jpg" alt="Wagyu">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-        <div class="menu-card glass">
-            <img src="images/food7.jpg" alt="Wagyu">
-            <h3>Wagyu Beef Tenderloin</h3>
-            <p>$95</p>
-        </div>
-
-             <!-- Right Arrow 
-                <div class="arrow right-arrow">&#10095;</div> -->
-
-        </div>
-    </div>
-
-</section>
-
-<!-- Reservation Section -->
-<section id="contact" class="section reservation-section">
-    <div class="container">
-        <div class="reservation-content text-center" data-aos="fade-up">
-            <h2 class="section-title">Reserve Your Table</h2>
-            <div class="gold-divider"></div>
-            <p class="reservation-subtitle">Experience an unforgettable evening with us</p>
-
-            <form id="reservation-form" class="reservation-form">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <input type="text" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="date" required>
-                    </div>
-                    <div class="form-group">
-                        <select required>
-                            <option class="options" value="">Number of Guests</option>
-                            <option class="options">1 Guest</option>
-                            <option class="options">2 Guests</option>
-                            <option class="options">3 Guests</option>
-                            <option class="options">4 Guests</option>
-                            <option class="options">5 Guests</option>
-                            <option class="options">6+ Guests</option>
-                        </select>
-                    </div>
+                <!-- === ORIGINAL 7 CARDS === -->
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food1.jpg" alt="Koththu Reimagined"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Sri Lankan Classic</span><h3 class="card-title">Koththu Reimagined</h3><div class="card-row"><span class="card-price">RS. 850</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food2.jpg" alt="Wagyu Beef Tenderloin"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Premium Cut</span><h3 class="card-title">Wagyu Beef Tenderloin</h3><div class="card-row"><span class="card-price">$95</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card featured">
+                    <div class="card-badge">Chef's Pick</div>
+                    <div class="card-img-wrap"><img src="images/food3.jpg" alt="Butter Poached Lobster"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Seafood</span><h3 class="card-title">Butter Poached Lobster</h3><div class="card-row"><span class="card-price">$78</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food4.jpg" alt="Chocolate Soufflé"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Dessert</span><h3 class="card-title">Chocolate Soufflé</h3><div class="card-row"><span class="card-price">$24</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food5.jpg" alt="Spiced Duck Confit"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Fusion</span><h3 class="card-title">Spiced Duck Confit</h3><div class="card-row"><span class="card-price">$65</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food6.jpg" alt="Truffle Risotto"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Vegetarian</span><h3 class="card-title">Truffle Risotto</h3><div class="card-row"><span class="card-price">$42</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food7.jpg" alt="Seared Scallops"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Starter</span><h3 class="card-title">Seared Scallops</h3><div class="card-row"><span class="card-price">$38</span><span class="card-view">View →</span></div></div>
                 </div>
 
-                <div class="form-group full">
-                    <textarea placeholder="Special Requests (Allergies, celebrations, dietary needs...)" rows="4"></textarea>
+                <!-- === DUPLICATE 7 CARDS (identical — for seamless infinite loop) === -->
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food1.jpg" alt="Koththu Reimagined"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Sri Lankan Classic</span><h3 class="card-title">Koththu Reimagined</h3><div class="card-row"><span class="card-price">RS. 850</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food2.jpg" alt="Wagyu Beef Tenderloin"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Premium Cut</span><h3 class="card-title">Wagyu Beef Tenderloin</h3><div class="card-row"><span class="card-price">$95</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card featured">
+                    <div class="card-badge">Chef's Pick</div>
+                    <div class="card-img-wrap"><img src="images/food3.jpg" alt="Butter Poached Lobster"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Seafood</span><h3 class="card-title">Butter Poached Lobster</h3><div class="card-row"><span class="card-price">$78</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food4.jpg" alt="Chocolate Soufflé"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Dessert</span><h3 class="card-title">Chocolate Soufflé</h3><div class="card-row"><span class="card-price">$24</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food5.jpg" alt="Spiced Duck Confit"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Fusion</span><h3 class="card-title">Spiced Duck Confit</h3><div class="card-row"><span class="card-price">$65</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food6.jpg" alt="Truffle Risotto"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Vegetarian</span><h3 class="card-title">Truffle Risotto</h3><div class="card-row"><span class="card-price">$42</span><span class="card-view">View →</span></div></div>
+                </div>
+                <div class="menu-card">
+                    <div class="card-img-wrap"><img src="images/food7.jpg" alt="Seared Scallops"><div class="card-img-overlay"></div></div>
+                    <div class="card-body"><span class="card-cat">Starter</span><h3 class="card-title">Seared Scallops</h3><div class="card-row"><span class="card-price">$38</span><span class="card-view">View →</span></div></div>
                 </div>
 
-                <button type="submit" class="btn-primary reserve-btn">Request Reservation</button>
-            </form>
-
-            <p id="reservation-message" class="reservation-message"></p>
+            </div>
         </div>
+
     </div>
 </section>
 
-<!-- Footer -->
-<!-- Footer with Social Media & Contact -->
-<footer class="footer">
+<!-- ==========================================
+     TEAM
+========================================== -->
+<section id="team" class="team-section">
+
+    <!-- Floating spice particles -->
+    <div class="spice-animation"></div>
+
     <div class="container">
-        <div class="footer-grid">
-            
-            <!-- Left - Info -->
-            <div class="footer-col">
-                <h3 class="footer-logo">Chef Tharu</h3>
-                <p class="footer-text">
-                    Redefining Sri Lankan fine dining with passion and elegance.
+
+        <div class="team-header" data-reveal="up">
+            <p class="section-eyebrow">Behind the Magic</p>
+            <h2 class="section-title">Meet Our<br><em>Leadership</em></h2>
+            <div class="gold-divider center"></div>
+        </div>
+
+        <div class="team-cards">
+
+            <!-- Owner card -->
+            <div class="team-card" data-reveal="left">
+                <div class="team-card-glow"></div>
+                <div class="team-img-wrap">
+                    <img src="images/owner.jpg" alt="Mrs Tharushika — Founder">
+                    <!-- Spinning dashed decorative ring -->
+                    <div class="team-img-ring"></div>
+                </div>
+                <div class="team-card-body">
+                    <span class="team-role">Founder &amp; Owner</span>
+                    <h3 class="team-name">Mrs. Tharushika</h3>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">
+                        Visionary founder of Chef Tharu. Passionate about creating unforgettable fine dining
+                        experiences and leading the island's culinary evolution since 2018.
+                    </p>
+                    <div class="team-social">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manager card -->
+            <div class="team-card" data-reveal="right">
+                <div class="team-card-glow"></div>
+                <div class="team-img-wrap">
+                    <img src="images/manager.jpg" alt="Dr. Praveen De Silva — Manager">
+                    <div class="team-img-ring"></div>
+                </div>
+                <div class="team-card-body">
+                    <span class="team-role">Restaurant Manager</span>
+                    <h3 class="team-name">Dr. Praveen De Silva</h3>
+                    <div class="team-divider"></div>
+                    <p class="team-bio">
+                        Ensures every guest enjoys a flawless dining experience. Oversees daily operations
+                        with warmth, precision, and unmatched Sri Lankan hospitality.
+                    </p>
+                    <div class="team-social">
+                        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ==========================================
+     RESERVATION / CONTACT
+========================================== -->
+<section id="contact" class="reservation-section">
+
+    <!-- Dark parallax background (food image, very dim) -->
+    <div class="reservation-bg-layer" id="resBgLayer"></div>
+    <div class="reservation-overlay"></div>
+
+    <div class="container">
+        <div class="reservation-inner" data-reveal="up">
+
+            <!-- LEFT: info panel -->
+            <div class="reservation-left">
+                <p class="section-eyebrow light">Reservations</p>
+                <h2 class="section-title light">Reserve Your<br><em>Table</em></h2>
+                <div class="gold-divider"></div>
+                <p class="res-info-text">
+                    Experience an unforgettable evening with us. We recommend reserving at least
+                    48 hours in advance. Private dining rooms available for special occasions.
                 </p>
+                <ul class="res-details">
+                    <li><i class="fa-regular fa-clock"></i> Mon–Sun: 12:00 PM – 11:00 PM</li>
+                    <li><i class="fa-solid fa-location-dot"></i> 123 Galle Road, Colombo 03</li>
+                    <li><i class="fa-solid fa-phone"></i> +94 71 234 5678</li>
+                </ul>
             </div>
 
-            <!-- Contact -->
-            <div class="footer-col">
-                <h4>Contact Us</h4>
-                <p><strong>Address:</strong><br>123 Galle Road, Colombo 03, Sri Lanka</p>
-                <p><strong>Phone:</strong> <a href="tel:+94712345678">+94 71 234 5678</a></p>
-                <p><strong>Email:</strong> <a href="mailto:info@cheftharu.lk">info@cheftharu.lk</a></p>
+            <!-- RIGHT: booking form -->
+            <div class="reservation-right">
+                <form id="reservation-form" class="reservation-form">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Date</label>
+                            <input type="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Guests</label>
+                            <select required>
+                                <option value="">Select guests</option>
+                                <option>1 Guest</option>
+                                <option>2 Guests</option>
+                                <option>3 Guests</option>
+                                <option>4 Guests</option>
+                                <option>5 Guests</option>
+                                <option>6+ Guests</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Special Requests</label>
+                        <textarea placeholder="Allergies, celebrations, dietary preferences…" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary reserve-btn">
+                        <span>Request Reservation</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                        <div class="btn-shine"></div>
+                    </button>
+
+                    <!-- JS injects success/error message here -->
+                    <p id="reservation-message" class="reservation-message"></p>
+
+                </form>
             </div>
 
-            <!-- Social Media -->
-            <div class="footer-col">
-                <h4>Follow Us</h4>
-                <div class="social-links">
-                    <a href="https://instagram.com/cheftharu" target="_blank">Instagram</a>
-                    <a href="https://facebook.com/cheftharu" target="_blank">Facebook</a>
-                    <a href="https://tiktok.com/@cheftharu" target="_blank">TikTok</a>
-                    <a href="https://wa.me/94712345678" target="_blank">WhatsApp</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>© 2026 Chef Tharu. All rights reserved. | Colombo, Sri Lanka</p>
         </div>
     </div>
+</section>
+
+<!-- ==========================================
+     FOOTER
+========================================== -->
+<footer class="footer">
+
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Brand column -->
+                <div class="footer-col footer-brand">
+                    <span class="footer-logo">Chef Tharu</span>
+                    <p class="footer-tagline">Redefining Sri Lankan fine dining<br>with passion and elegance.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/cheftharu" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://facebook.com/cheftharu"  target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com/@cheftharu"   target="_blank" rel="noopener" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://wa.me/94712345678"        target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick links column -->
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Our Story</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Reservations</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact column -->
+                <div class="footer-col">
+                    <h4>Contact Us</h4>
+                    <address class="footer-address">
+                        <p><i class="fa-solid fa-location-dot"></i> 123 Galle Road, Colombo 03, Sri Lanka</p>
+                        <p><i class="fa-solid fa-phone"></i> <a href="tel:+94712345678">+94 71 234 5678</a></p>
+                        <p><i class="fa-regular fa-envelope"></i> <a href="mailto:info@cheftharu.lk">info@cheftharu.lk</a></p>
+                    </address>
+                </div>
+
+                <!-- Hours column -->
+                <div class="footer-col">
+                    <h4>Opening Hours</h4>
+                    <ul class="footer-hours">
+                        <li><span>Mon – Thu</span><span>12:00 – 10:30 PM</span></li>
+                        <li><span>Fri – Sat</span><span>12:00 – 11:30 PM</span></li>
+                        <li><span>Sunday</span><span>12:00 – 10:00 PM</span></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Copyright bar -->
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© 2026 Chef Tharu. All rights reserved. | Colombo, Sri Lanka</p>
+            <p>Crafted with passion for fine dining.</p>
+        </div>
+    </div>
+
 </footer>
 
-<!-- Custom JS -->
+<!-- Main script (deferred by placement at end of body) -->
 <script src="js/script.js"></script>
 
 </body>
