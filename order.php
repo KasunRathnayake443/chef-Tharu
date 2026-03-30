@@ -62,7 +62,7 @@ foreach ($categories as $cat) {
 
 <header class="site-header" id="siteHeader">
     <div class="header-inner">
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
             <div class="logo-mark">CT</div>
             <div class="logo-text">
                 <span class="logo-main">Chef Tharu</span>
@@ -72,12 +72,12 @@ foreach ($categories as $cat) {
 
         <nav class="main-nav" id="mainNav">
             <ul>
-                <li><a href="index.html" class="nav-link"><span>01</span>Home</a></li>
-                <li><a href="index.html#about" class="nav-link"><span>02</span>Story</a></li>
-                <li><a href="index.html#menu" class="nav-link"><span>03</span>Menu</a></li>
+                <li><a href="index.php" class="nav-link"><span>01</span>Home</a></li>
+                <li><a href="index.php#about" class="nav-link"><span>02</span>Story</a></li>
+                <li><a href="index.php#menu" class="nav-link"><span>03</span>Menu</a></li>
                 <li><a href="catering.html" class="nav-link"><span>04</span>Catering</a></li>
                 <li><a href="order.php" class="nav-link active-page"><span>05</span>Order</a></li>
-                <li><a href="index.html#contact" class="nav-link"><span>06</span>Reserve</a></li>
+                <li><a href="index.php#contact" class="nav-link"><span>06</span>Reserve</a></li>
             </ul>
         </nav>
 
