@@ -383,7 +383,7 @@ function initSpices() {
             icon.style.fontSize = (12 + Math.random() * 16) + "px";
 
             // Slight opacity variation
-            icon.style.opacity = (0.15 + Math.random() * 0.3).toFixed(2);
+            icon.style.opacity = (0.55 + Math.random() * 0.3).toFixed(2);
 
             container.appendChild(icon);
         }

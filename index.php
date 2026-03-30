@@ -56,11 +56,11 @@
         <!-- Desktop navigation links -->
         <nav class="main-nav" id="mainNav">
             <ul>
-                <li><a href="#home"    class="nav-link"><span>01</span>Home</a></li>
-                <li><a href="#about"   class="nav-link"><span>02</span>Story</a></li>
-                <li><a href="#menu"    class="nav-link"><span>03</span>Menu</a></li>
-                <li><a href="#team"    class="nav-link"><span>04</span>Team</a></li>
-                <li><a href="#contact" class="nav-link"><span>05</span>Reserve</a></li>
+                <li><a href="#home"          class="nav-link"><span>01</span>Home</a></li>
+                <li><a href="#about"         class="nav-link"><span>02</span>Story</a></li>
+                <li><a href="#menu"          class="nav-link"><span>03</span>Menu</a></li>
+                <li><a href="catering.html"  class="nav-link"><span>04</span>Catering</a></li>
+                <li><a href="order.php"     class="nav-link"><span>05</span>Order</a></li>
             </ul>
         </nav>
 
@@ -137,23 +137,10 @@
             <a href="#contact" class="btn-ghost"><span>Book a Table</span></a>
         </div>
 
-        <!-- Animated number stats (JS counts up on load) -->
-        <div class="hero-stats">
-            <div class="stat">
-                <span class="stat-number" data-target="7">0</span><span class="stat-plus">+</span>
-                <span class="stat-label">Years of Excellence</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <span class="stat-number" data-target="120">0</span><span class="stat-plus">+</span>
-                <span class="stat-label">Signature Dishes</span>
-            </div>
-            <div class="stat-divider"></div>
-            <div class="stat">
-                <span class="stat-number" data-target="50">0</span><span class="stat-plus">k+</span>
-                <span class="stat-label">Happy Guests</span>
-            </div>
-        </div>
+        <a href="order.php" class="btn-reserve" style="background:var(--gold);color:var(--ink)">
+                <span>Order Now</span>
+                <i class="fa-solid fa-bag-shopping"></i>
+        </a>
 
     </div>
 </section>
@@ -434,16 +421,86 @@
                     Experience an unforgettable evening with us. We recommend reserving at least
                     48 hours in advance. Private dining rooms available for special occasions.
                 </p>
-                <ul class="res-details">
-                    <li><i class="fa-regular fa-clock"></i> Mon–Sun: 12:00 PM – 11:00 PM</li>
-                    <li><i class="fa-solid fa-location-dot"></i> 123 Galle Road, Colombo 03</li>
-                    <li><i class="fa-solid fa-phone"></i> +94 71 234 5678</li>
-                </ul>
+                 <!-- ==============================
+         BRANCH 01 — COLOMBO
+    =============================== -->
+    <div class="branch-card">
+        <div class="branch-header">
+            <span class="branch-number">01</span>
+            <div class="branch-title-group">
+                <h4 class="branch-name">Colombo — Galle Road</h4>
+                <span class="branch-tag">Flagship</span>
+            </div>
+        </div>
+        <ul class="res-details">
+            <li><i class="fa-regular fa-clock"></i> Mon–Sun: 12:00 PM – 11:00 PM</li>
+            <li><i class="fa-solid fa-location-dot"></i> 123 Galle Road, Colombo 03</li>
+            <li><i class="fa-solid fa-phone"></i> +94 71 234 5678</li>
+            <li><i class="fa-regular fa-envelope"></i> colombo@cheftharu.lk</li>
+        </ul>
+    </div>
+
+    <!-- ==============================
+         BRANCH 02 — KANDY
+    =============================== -->
+    <div class="branch-card">
+        <div class="branch-header">
+            <span class="branch-number">02</span>
+            <div class="branch-title-group">
+                <h4 class="branch-name">Kandy — Peradeniya Road</h4>
+                <span class="branch-tag">New</span>
+            </div>
+        </div>
+        <ul class="res-details">
+            <li><i class="fa-regular fa-clock"></i> Mon–Sun: 12:00 PM – 10:30 PM</li>
+            <li><i class="fa-solid fa-location-dot"></i> 47 Peradeniya Road, Kandy</li>
+            <li><i class="fa-solid fa-phone"></i> +94 77 345 6789</li>
+            <li><i class="fa-regular fa-envelope"></i> kandy@cheftharu.lk</li>
+        </ul>
+    </div>
+
+                
             </div>
 
             <!-- RIGHT: booking form -->
             <div class="reservation-right">
                 <form id="reservation-form" class="reservation-form">
+
+                    <!-- Branch selection radio buttons -->
+<div class="form-group full branch-select-group">
+    <label>Select Branch</label>
+    <div class="branch-radio-wrap">
+
+        <label class="branch-radio-card" for="branch-colombo">
+            <input type="radio" id="branch-colombo" name="branch" value="colombo" checked>
+            <div class="branch-radio-inner">
+                <span class="branch-radio-number">01</span>
+                <div class="branch-radio-info">
+                    <span class="branch-radio-name">Colombo</span>
+                    <span class="branch-radio-address">Galle Road, Colombo 03</span>
+                </div>
+                <div class="branch-radio-check">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+        </label>
+
+        <label class="branch-radio-card" for="branch-kandy">
+            <input type="radio" id="branch-kandy" name="branch" value="kandy">
+            <div class="branch-radio-inner">
+                <span class="branch-radio-number">02</span>
+                <div class="branch-radio-info">
+                    <span class="branch-radio-name">Kandy</span>
+                    <span class="branch-radio-address">Peradeniya Road, Kandy</span>
+                </div>
+                <div class="branch-radio-check">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+            </div>
+        </label>
+
+    </div>
+</div>
 
                     <div class="form-row">
                         <div class="form-group">

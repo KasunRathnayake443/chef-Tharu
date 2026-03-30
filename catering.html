@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chef Tharu — Catering Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--
+        FONTS — matching main site
+        Italiana         → luxury display titles
+        Cormorant Infant → elegant body text
+        Jost             → clean UI labels
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@200;300;400;500&family=Cormorant+Infant:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/catering.css">
+</head>
+<body>
+
+<!-- ==========================================
+     CUSTOM CURSOR
+========================================== -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ==========================================
+     NAVIGATION — same style as main site
+========================================== -->
+<header class="site-header" id="siteHeader">
+    <div class="header-inner">
+
+        <a href="index.html" class="logo">
+            <div class="logo-mark">CT</div>
+            <div class="logo-text">
+                <span class="logo-main">Chef Tharu</span>
+                <span class="logo-tagline">Fine Dining · Colombo</span>
+            </div>
+        </a>
+
+        <nav class="main-nav" id="mainNav">
+            <ul>
+                <li><a href="index.php"    class="nav-link"><span>01</span>Home</a></li>
+                <li><a href="index.php#about"   class="nav-link"><span>02</span>Story</a></li>
+                <li><a href="index.php#menu"    class="nav-link"><span>03</span>Menu</a></li>
+                <li><a href="catering.html"      class="nav-link active-page"><span>04</span>Catering</a></li>
+                <li><a href="index.php#contact" class="nav-link"><span>05</span>Reserve</a></li>
+                <li><a href="order.php"     class="nav-link"><span>05</span>Order</a></li>
+            </ul>
+        </nav>
+
+        <a href="#catering-form" class="btn-reserve">
+            <span>Get a Quote</span>
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span><span></span><span></span>
+        </button>
+
+    </div>
+</header>
+
+<!-- ==========================================
+     HERO — CATERING PAGE
+========================================== -->
+<section class="catering-hero">
+
+    <!-- Dark textured background -->
+    <div class="catering-hero-bg"></div>
+    <div class="catering-hero-overlay"></div>
+
+    <!-- Ambient orbs -->
+    <div class="orb orb-gold"></div>
+    <div class="orb orb-ember"></div>
+
+    <!-- Scroll indicator -->
+    <div class="scroll-indicator">
+        <span class="scroll-text">Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+
+    <div class="catering-hero-content">
+        <p class="hero-eyebrow">
+            <span class="eyebrow-line"></span>
+            Exclusive Catering Services
+            <span class="eyebrow-line"></span>
+        </p>
+        <h1 class="catering-hero-title">
+            <span style="--i:0">Elevate</span>
+            <span style="--i:1" class="title-accent">Every</span>
+            <span style="--i:2">Occasion</span>
+        </h1>
+        <p class="catering-hero-sub">
+            Bespoke Sri Lankan fine dining — delivered to your venue.<br>
+            Available for events of <em>50 guests and above.</em>
+        </p>
+        <div class="hero-cta-row">
+            <a href="#packages" class="btn-primary">
+                <span>View Packages</span>
+                <div class="btn-shine"></div>
+            </a>
+            <a href="#catering-form" class="btn-ghost"><span>Request a Quote</span></a>
+        </div>
+    </div>
+
+    <!-- Three tier badges floating at bottom -->
+    <div class="tier-badges">
+        <div class="tier-badge bronze-badge">
+            <i class="fa-solid fa-medal"></i>
+            <span>Bronze</span>
+        </div>
+        <div class="tier-badge silver-badge">
+            <i class="fa-solid fa-medal"></i>
+            <span>Silver</span>
+        </div>
+        <div class="tier-badge gold-badge">
+            <i class="fa-solid fa-crown"></i>
+            <span>Gold</span>
+        </div>
+    </div>
+
+</section>
+
+<!-- ==========================================
+     MARQUEE STRIP
+========================================== -->
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span>Corporate Events</span><span class="marquee-dot">✦</span>
+        <span>Weddings</span><span class="marquee-dot">✦</span>
+        <span>Private Celebrations</span><span class="marquee-dot">✦</span>
+        <span>Gala Dinners</span><span class="marquee-dot">✦</span>
+        <span>Product Launches</span><span class="marquee-dot">✦</span>
+        <span>Cultural Events</span><span class="marquee-dot">✦</span>
+        <span>50+ Guests</span><span class="marquee-dot">✦</span>
+        <!-- duplicate -->
+        <span>Corporate Events</span><span class="marquee-dot">✦</span>
+        <span>Weddings</span><span class="marquee-dot">✦</span>
+        <span>Private Celebrations</span><span class="marquee-dot">✦</span>
+        <span>Gala Dinners</span><span class="marquee-dot">✦</span>
+        <span>Product Launches</span><span class="marquee-dot">✦</span>
+        <span>Cultural Events</span><span class="marquee-dot">✦</span>
+        <span>50+ Guests</span><span class="marquee-dot">✦</span>
+    </div>
+</div>
+
+<!-- ==========================================
+     INTRO — WHAT WE OFFER
+========================================== -->
+<section class="catering-intro">
+    <div class="container">
+        <div class="intro-grid">
+
+            <div class="intro-text" data-reveal="left">
+                <p class="section-eyebrow">Why Choose Us</p>
+                <h2 class="section-title left-align">
+                    Fine Dining,<br><em>Your Venue</em>
+                </h2>
+                <div class="gold-divider"></div>
+                <p class="intro-body">
+                    Chef Tharu's catering service brings the same award-winning Sri Lankan 
+                    fusion cuisine from our Colombo and Kandy kitchens directly to your event — 
+                    prepared fresh, plated beautifully, and served with the same warmth our 
+                    restaurant guests experience every evening.
+                </p>
+                <p class="intro-body">
+                    Whether it's an intimate 50-person corporate dinner or a grand 500-guest 
+                    wedding reception, we tailor every detail of your menu to your occasion, 
+                    dietary needs, and cultural preferences.
+                </p>
+            </div>
+
+            <div class="intro-stats" data-reveal="right">
+                <div class="intro-stat">
+                    <span class="istat-number">500+</span>
+                    <span class="istat-label">Events Catered</span>
+                </div>
+                <div class="intro-stat">
+                    <span class="istat-number">50</span>
+                    <span class="istat-label">Min. Guests</span>
+                </div>
+                <div class="intro-stat">
+                    <span class="istat-number">3</span>
+                    <span class="istat-label">Curated Packages</span>
+                </div>
+                <div class="intro-stat">
+                    <span class="istat-number">48h</span>
+                    <span class="istat-label">Advance Booking</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     PACKAGES — BRONZE / SILVER / GOLD
+========================================== -->
+<section id="packages" class="packages-section">
+
+    <div class="packages-bg"></div>
+    <div class="packages-overlay"></div>
+
+    <div class="container">
+
+        <div class="packages-header" data-reveal="up">
+            <p class="section-eyebrow light">Catering Packages</p>
+            <h2 class="section-title light">Choose Your<br><em>Experience</em></h2>
+            <div class="gold-divider center"></div>
+            <p class="packages-note">All packages available for orders of 50 pax and above</p>
+        </div>
+
+        <div class="packages-grid">
+
+            <!-- ===== BRONZE PACKAGE ===== -->
+            <div class="package-card bronze" data-reveal="left">
+                <div class="pkg-glow"></div>
+
+                <!-- Header -->
+                <div class="pkg-header">
+                    <div class="pkg-medal">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div class="pkg-tier-info">
+                        <span class="pkg-tier-label">Bronze</span>
+                        <h3 class="pkg-name">The Essence</h3>
+                    </div>
+                </div>
+
+                <div class="pkg-price-row">
+                    <span class="pkg-price">RS. 2,500</span>
+                    <span class="pkg-per">per person</span>
+                </div>
+
+                <div class="pkg-divider"></div>
+
+                <!-- What's included -->
+                <ul class="pkg-features">
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Welcome Drinks</strong><span>Fresh fruit punch or iced tea</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>3 Starters</strong><span>Rotating seasonal selection</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>2 Main Courses</strong><span>One meat, one vegetarian</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Rice & Bread Station</strong><span>Basmati, roti & hoppers</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>1 Dessert</strong><span>Chef's daily selection</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Service Staff</strong><span>1 server per 20 guests</span></div>
+                    </li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i>
+                        <div><strong>Live Cooking Station</strong><span>Not included</span></div>
+                    </li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i>
+                        <div><strong>Dedicated Event Chef</strong><span>Not included</span></div>
+                    </li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i>
+                        <div><strong>Custom Menu Design</strong><span>Not included</span></div>
+                    </li>
+                </ul>
+
+                <a href="#catering-form" class="pkg-cta">
+                    <span>Select Bronze</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+            <!-- ===== SILVER PACKAGE (FEATURED) ===== -->
+            <div class="package-card silver featured" data-reveal="up">
+                <div class="pkg-glow"></div>
+                <div class="pkg-popular-badge">Most Popular</div>
+
+                <div class="pkg-header">
+                    <div class="pkg-medal">
+                        <i class="fa-solid fa-medal"></i>
+                    </div>
+                    <div class="pkg-tier-info">
+                        <span class="pkg-tier-label">Silver</span>
+                        <h3 class="pkg-name">The Refined</h3>
+                    </div>
+                </div>
+
+                <div class="pkg-price-row">
+                    <span class="pkg-price">RS. 4,500</span>
+                    <span class="pkg-per">per person</span>
+                </div>
+
+                <div class="pkg-divider"></div>
+
+                <ul class="pkg-features">
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Signature Mocktails</strong><span>Ceylon spice & tropical blends</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>5 Starters</strong><span>Passed canapés + cold platters</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>4 Main Courses</strong><span>Two meat, one seafood, one veg</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Full Accompaniments</strong><span>Rice, bread, sambols & chutneys</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>2 Desserts</strong><span>Sri Lankan sweets + Western</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Service Staff</strong><span>1 server per 15 guests</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Live Cooking Station</strong><span>One interactive station</span></div>
+                    </li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i>
+                        <div><strong>Dedicated Event Chef</strong><span>Not included</span></div>
+                    </li>
+                    <li class="excluded"><i class="fa-solid fa-xmark"></i>
+                        <div><strong>Custom Menu Design</strong><span>Not included</span></div>
+                    </li>
+                </ul>
+
+                <a href="#catering-form" class="pkg-cta silver-cta">
+                    <span>Select Silver</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+            <!-- ===== GOLD PACKAGE ===== -->
+            <div class="package-card gold" data-reveal="right">
+                <div class="pkg-glow"></div>
+
+                <div class="pkg-header">
+                    <div class="pkg-medal">
+                        <i class="fa-solid fa-crown"></i>
+                    </div>
+                    <div class="pkg-tier-info">
+                        <span class="pkg-tier-label">Gold</span>
+                        <h3 class="pkg-name">The Prestige</h3>
+                    </div>
+                </div>
+
+                <div class="pkg-price-row">
+                    <span class="pkg-price">RS. 7,500</span>
+                    <span class="pkg-per">per person</span>
+                </div>
+
+                <div class="pkg-divider"></div>
+
+                <ul class="pkg-features">
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Premium Welcome Bar</strong><span>Cocktails, mocktails & Ceylon tea</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>7 Starters</strong><span>Full canapé butler service</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>6 Main Courses</strong><span>Premium cuts, seafood & vegetarian</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Wagyu & Lobster Option</strong><span>Premium proteins available</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Dessert Showcase</strong><span>Live dessert station + 4 options</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Premium Service</strong><span>1 server per 10 guests</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>3 Live Cooking Stations</strong><span>Interactive chef experience</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Dedicated Event Chef</strong><span>Personal chef for your event</span></div>
+                    </li>
+                    <li class="included"><i class="fa-solid fa-check"></i>
+                        <div><strong>Custom Menu Design</strong><span>Fully bespoke to your occasion</span></div>
+                    </li>
+                </ul>
+
+                <a href="#catering-form" class="pkg-cta gold-cta">
+                    <span>Select Gold</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- Comparison note -->
+        <p class="packages-footer-note" data-reveal="up">
+            All prices are per person and exclude venue hire, equipment rental, and transport outside Colombo &amp; Kandy.
+            Minimum order: <strong>50 pax</strong>. Contact us for custom quotes above 300 pax.
+        </p>
+
+    </div>
+</section>
+
+<!-- ==========================================
+     EVENT TYPES
+========================================== -->
+<section class="events-section">
+    <div class="container">
+
+        <div class="events-header" data-reveal="up">
+            <p class="section-eyebrow">We Cover</p>
+            <h2 class="section-title">Event<br><em>Types</em></h2>
+            <div class="gold-divider center"></div>
+        </div>
+
+        <div class="events-grid">
+            <div class="event-card" data-reveal="up" style="--ei:0">
+                <div class="event-icon"><i class="fa-solid fa-rings-wedding"></i></div>
+                <h4>Weddings</h4>
+                <p>From intimate ceremonies to grand receptions. We handle the full dining experience so you focus on the moment.</p>
+            </div>
+            <div class="event-card" data-reveal="up" style="--ei:1">
+                <div class="event-icon"><i class="fa-solid fa-briefcase"></i></div>
+                <h4>Corporate Events</h4>
+                <p>Board dinners, product launches, annual galas — impeccable food that reflects the calibre of your brand.</p>
+            </div>
+            <div class="event-card" data-reveal="up" style="--ei:2">
+                <div class="event-icon"><i class="fa-solid fa-champagne-glasses"></i></div>
+                <h4>Private Celebrations</h4>
+                <p>Birthdays, anniversaries, milestones — elevated with our signature Sri Lankan touch and personalised menus.</p>
+            </div>
+            <div class="event-card" data-reveal="up" style="--ei:3">
+                <div class="event-icon"><i class="fa-solid fa-star"></i></div>
+                <h4>Gala Dinners</h4>
+                <p>Multi-course seated dinners with full table service, custom menus, and live cooking theatre.</p>
+            </div>
+            <div class="event-card" data-reveal="up" style="--ei:4">
+                <div class="event-icon"><i class="fa-solid fa-building"></i></div>
+                <h4>Cultural Events</h4>
+                <p>Poya, Avurudu, Deepawali, Christmas — we celebrate Sri Lanka's rich cultural calendar with authentic menus.</p>
+            </div>
+            <div class="event-card" data-reveal="up" style="--ei:5">
+                <div class="event-icon"><i class="fa-solid fa-utensils"></i></div>
+                <h4>Themed Dinners</h4>
+                <p>Spice Route nights, Ceylon colonial suppers, modern fusion showcases — we bring the concept to life.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ==========================================
+     CATERING ENQUIRY FORM
+========================================== -->
+<section id="catering-form" class="catering-form-section">
+
+    <div class="form-section-bg"></div>
+    <div class="form-section-overlay"></div>
+
+    <div class="container">
+        <div class="catering-form-inner" data-reveal="up">
+
+            <!-- Left: info -->
+            <div class="form-info">
+                <p class="section-eyebrow light">Get Started</p>
+                <h2 class="section-title light">Request a<br><em>Catering Quote</em></h2>
+                <div class="gold-divider"></div>
+                <p class="form-info-text">
+                    Fill in the form and our catering team will get back to you 
+                    within 24 hours with a personalised quote and menu proposal.
+                </p>
+                <ul class="form-info-list">
+                    <li><i class="fa-solid fa-phone"></i> +94 71 234 5678</li>
+                    <li><i class="fa-regular fa-envelope"></i> catering@cheftharu.lk</li>
+                    <li><i class="fa-solid fa-location-dot"></i> Serving Colombo &amp; Kandy</li>
+                    <li><i class="fa-regular fa-clock"></i> Min. 48h advance notice</li>
+                </ul>
+            </div>
+
+            <!-- Right: form -->
+            <div class="form-body">
+                <form id="catering-enquiry-form">
+
+                    <!-- Package selection (radio) -->
+                    <div class="form-group full">
+                        <label>Select Package</label>
+                        <div class="pkg-radio-wrap">
+
+                            <label class="pkg-radio-card bronze-radio" for="pkg-bronze">
+                                <input type="radio" id="pkg-bronze" name="package" value="bronze">
+                                <div class="pkg-radio-inner">
+                                    <i class="fa-solid fa-medal"></i>
+                                    <div>
+                                        <span class="pkg-r-name">Bronze</span>
+                                        <span class="pkg-r-price">RS. 2,500 / pax</span>
+                                    </div>
+                                    <div class="pkg-radio-check"><i class="fa-solid fa-check"></i></div>
+                                </div>
+                            </label>
+
+                            <label class="pkg-radio-card silver-radio" for="pkg-silver">
+                                <input type="radio" id="pkg-silver" name="package" value="silver" checked>
+                                <div class="pkg-radio-inner">
+                                    <i class="fa-solid fa-medal"></i>
+                                    <div>
+                                        <span class="pkg-r-name">Silver</span>
+                                        <span class="pkg-r-price">RS. 4,500 / pax</span>
+                                    </div>
+                                    <div class="pkg-radio-check"><i class="fa-solid fa-check"></i></div>
+                                </div>
+                            </label>
+
+                            <label class="pkg-radio-card gold-radio" for="pkg-gold">
+                                <input type="radio" id="pkg-gold" name="package" value="gold">
+                                <div class="pkg-radio-inner">
+                                    <i class="fa-solid fa-crown"></i>
+                                    <div>
+                                        <span class="pkg-r-name">Gold</span>
+                                        <span class="pkg-r-price">RS. 7,500 / pax</span>
+                                    </div>
+                                    <div class="pkg-radio-check"><i class="fa-solid fa-check"></i></div>
+                                </div>
+                            </label>
+
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Your Name</label>
+                            <input type="text" placeholder="Full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" placeholder="your@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Phone Number</label>
+                            <input type="tel" placeholder="+94 XX XXX XXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Date</label>
+                            <input type="date" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Number of Guests</label>
+                            <select required>
+                                <option value="">Select pax</option>
+                                <option>50 – 100 Guests</option>
+                                <option>100 – 200 Guests</option>
+                                <option>200 – 300 Guests</option>
+                                <option>300 – 500 Guests</option>
+                                <option>500+ Guests</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Type</label>
+                            <select required>
+                                <option value="">Select type</option>
+                                <option>Wedding</option>
+                                <option>Corporate Event</option>
+                                <option>Private Celebration</option>
+                                <option>Gala Dinner</option>
+                                <option>Cultural Event</option>
+                                <option>Themed Dinner</option>
+                                <option>Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Venue / Location</label>
+                        <input type="text" placeholder="Event venue name and city">
+                    </div>
+
+                    <div class="form-group full">
+                        <label>Special Requirements</label>
+                        <textarea placeholder="Dietary restrictions, cultural preferences, theme ideas, additional services…" rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary submit-btn">
+                        <span>Send Catering Enquiry</span>
+                        <i class="fa-solid fa-paper-plane"></i>
+                        <div class="btn-shine"></div>
+                    </button>
+
+                    <p id="catering-message" class="form-message"></p>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     FOOTER — same as main site
+========================================== -->
+<footer class="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <span class="footer-logo">Chef Tharu</span>
+                    <p class="footer-tagline">Redefining Sri Lankan fine dining<br>with passion and elegance.</p>
+                    <div class="footer-social">
+                        <a href="https://instagram.com/cheftharu" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://facebook.com/cheftharu" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://tiktok.com/@cheftharu" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="https://wa.me/94712345678" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">Our Story</a></li>
+                        <li><a href="index.html#menu">Menu</a></li>
+                        <li><a href="catering.html">Catering</a></li>
+                        <li><a href="index.html#contact">Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Catering</h4>
+                    <ul class="footer-links">
+                        <li><a href="#packages">Bronze Package</a></li>
+                        <li><a href="#packages">Silver Package</a></li>
+                        <li><a href="#packages">Gold Package</a></li>
+                        <li><a href="#catering-form">Get a Quote</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <address class="footer-address">
+                        <p><i class="fa-solid fa-phone"></i> <a href="tel:+94712345678">+94 71 234 5678</a></p>
+                        <p><i class="fa-regular fa-envelope"></i> <a href="mailto:catering@cheftharu.lk">catering@cheftharu.lk</a></p>
+                        <p><i class="fa-solid fa-location-dot"></i> Colombo &amp; Kandy</p>
+                    </address>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <p>© 2026 Chef Tharu. All rights reserved. | Colombo, Sri Lanka</p>
+            <p>Catering available for 50 pax and above.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/catering.js"></script>
+</body>
+</html>
