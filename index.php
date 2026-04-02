@@ -1,3 +1,21 @@
+<?php
+require_once 'config/db.php';
+
+$menuItems = $pdo->query("
+    SELECT
+        foods.id,
+        foods.name,
+        foods.price,
+        foods.image,
+        categories.name AS category_name
+    FROM foods
+    INNER JOIN categories ON categories.id = foods.category_id
+    WHERE foods.available = 1
+    ORDER BY RAND()
+    LIMIT 14
+")->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -242,7 +260,6 @@
 ========================================== -->
 <section id="menu" class="menu-section">
 
-    <!-- Full-bleed looping video (darkened with overlay) -->
     <video autoplay muted loop playsinline class="menu-bg-video">
         <source src="assets/menu-bg.mp4" type="video/mp4">
     </video>
@@ -256,82 +273,91 @@
             <div class="gold-divider center"></div>
         </div>
 
-        <!--
-            Slider track: CSS animates translateX(-50%) so
-            the duplicate set creates a perfectly seamless loop.
-            Hovering the track pauses the animation.
-        -->
         <div class="menu-wrapper">
             <div class="menu-slider" id="menuSlider">
 
-                <!-- === ORIGINAL 7 CARDS === -->
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food1.jpg" alt="Koththu Reimagined"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Sri Lankan Classic</span><h3 class="card-title">Koththu Reimagined</h3><div class="card-row"><span class="card-price">RS. 850</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food2.jpg" alt="Wagyu Beef Tenderloin"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Premium Cut</span><h3 class="card-title">Wagyu Beef Tenderloin</h3><div class="card-row"><span class="card-price">$95</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card featured">
-                    <div class="card-badge">Chef's Pick</div>
-                    <div class="card-img-wrap"><img src="images/food3.jpg" alt="Butter Poached Lobster"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Seafood</span><h3 class="card-title">Butter Poached Lobster</h3><div class="card-row"><span class="card-price">$78</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food4.jpg" alt="Chocolate Soufflé"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Dessert</span><h3 class="card-title">Chocolate Soufflé</h3><div class="card-row"><span class="card-price">$24</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food5.jpg" alt="Spiced Duck Confit"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Fusion</span><h3 class="card-title">Spiced Duck Confit</h3><div class="card-row"><span class="card-price">$65</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food6.jpg" alt="Truffle Risotto"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Vegetarian</span><h3 class="card-title">Truffle Risotto</h3><div class="card-row"><span class="card-price">$42</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food7.jpg" alt="Seared Scallops"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Starter</span><h3 class="card-title">Seared Scallops</h3><div class="card-row"><span class="card-price">$38</span><span class="card-view">View →</span></div></div>
-                </div>
+                <?php if (!empty($menuItems)): ?>
+                    <?php foreach ($menuItems as $item): ?>
+                        <a href="order.php?food=<?php echo (int)$item['id']; ?>" class="menu-card-link">
+                            <div class="menu-card <?php echo rand(1, 6) === 3 ? 'featured' : ''; ?>">
+                                
+                                <?php if (rand(1, 8) === 4): ?>
+                                    <div class="card-badge">Chef's Pick</div>
+                                <?php endif; ?>
 
-                <!-- === DUPLICATE 7 CARDS (identical — for seamless infinite loop) === -->
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food1.jpg" alt="Koththu Reimagined"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Sri Lankan Classic</span><h3 class="card-title">Koththu Reimagined</h3><div class="card-row"><span class="card-price">RS. 850</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food2.jpg" alt="Wagyu Beef Tenderloin"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Premium Cut</span><h3 class="card-title">Wagyu Beef Tenderloin</h3><div class="card-row"><span class="card-price">$95</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card featured">
-                    <div class="card-badge">Chef's Pick</div>
-                    <div class="card-img-wrap"><img src="images/food3.jpg" alt="Butter Poached Lobster"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Seafood</span><h3 class="card-title">Butter Poached Lobster</h3><div class="card-row"><span class="card-price">$78</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food4.jpg" alt="Chocolate Soufflé"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Dessert</span><h3 class="card-title">Chocolate Soufflé</h3><div class="card-row"><span class="card-price">$24</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food5.jpg" alt="Spiced Duck Confit"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Fusion</span><h3 class="card-title">Spiced Duck Confit</h3><div class="card-row"><span class="card-price">$65</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food6.jpg" alt="Truffle Risotto"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Vegetarian</span><h3 class="card-title">Truffle Risotto</h3><div class="card-row"><span class="card-price">$42</span><span class="card-view">View →</span></div></div>
-                </div>
-                <div class="menu-card">
-                    <div class="card-img-wrap"><img src="images/food7.jpg" alt="Seared Scallops"><div class="card-img-overlay"></div></div>
-                    <div class="card-body"><span class="card-cat">Starter</span><h3 class="card-title">Seared Scallops</h3><div class="card-row"><span class="card-price">$38</span><span class="card-view">View →</span></div></div>
-                </div>
+                                <div class="card-img-wrap">
+                                    <img
+                                        src="<?php echo !empty($item['image']) ? 'uploads/foods/' . htmlspecialchars($item['image']) : 'images/food-placeholder.jpg'; ?>"
+                                        alt="<?php echo htmlspecialchars($item['name']); ?>"
+                                    >
+                                    <div class="card-img-overlay"></div>
+                                </div>
+
+                                <div class="card-body">
+                                    <span class="card-cat">
+                                        <?php echo htmlspecialchars($item['category_name']); ?>
+                                    </span>
+
+                                    <h3 class="card-title">
+                                        <?php echo htmlspecialchars($item['name']); ?>
+                                    </h3>
+
+                                    <div class="card-row">
+                                        <span class="card-price">
+                                            RS. <?php echo number_format($item['price'], 2); ?>
+                                        </span>
+                                        <span class="card-view">Order →</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+
+                    <?php foreach ($menuItems as $item): ?>
+                        <a href="order.php?food=<?php echo (int)$item['id']; ?>" class="menu-card-link">
+                            <div class="menu-card <?php echo rand(1, 6) === 3 ? 'featured' : ''; ?>">
+                                
+                                <?php if (rand(1, 8) === 4): ?>
+                                    <div class="card-badge">Chef's Pick</div>
+                                <?php endif; ?>
+
+                                <div class="card-img-wrap">
+                                    <img
+                                        src="<?php echo !empty($item['image']) ? 'uploads/foods/' . htmlspecialchars($item['image']) : 'images/food-placeholder.jpg'; ?>"
+                                        alt="<?php echo htmlspecialchars($item['name']); ?>"
+                                    >
+                                    <div class="card-img-overlay"></div>
+                                </div>
+
+                                <div class="card-body">
+                                    <span class="card-cat">
+                                        <?php echo htmlspecialchars($item['category_name']); ?>
+                                    </span>
+
+                                    <h3 class="card-title">
+                                        <?php echo htmlspecialchars($item['name']); ?>
+                                    </h3>
+
+                                    <div class="card-row">
+                                        <span class="card-price">
+                                            RS. <?php echo number_format($item['price'], 2); ?>
+                                        </span>
+                                        <span class="card-view">Order →</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    <?php endforeach; ?>
+
+                <?php else: ?>
+                    <p style="color:#fff;text-align:center;width:100%;">No menu items available right now.</p>
+                <?php endif; ?>
 
             </div>
         </div>
 
     </div>
 </section>
-
 <!-- ==========================================
      TEAM
 ========================================== -->
